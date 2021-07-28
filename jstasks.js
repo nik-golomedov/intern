@@ -11,7 +11,6 @@ const degree = (n, deg) => {
 const flatArr = arr => arr.reduce((acc, item) => acc.concat((Array.isArray(item)) ? flatArr(item) : item), []);
 //////////////////////////////////
 const toTranslate = (n, countCalls) => {
-  console.log(countCalls);
 
   const fn = {
     0: '',
@@ -156,4 +155,4 @@ function countWithThous(n) {
     hardCheckSpace(n);
 }
 
-console.log(toTranslate(76000))
+console.log(toTranslate(0))
