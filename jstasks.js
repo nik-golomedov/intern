@@ -6,10 +6,10 @@ const degree = (n, deg) => {
   }
 }
 
+const flatArr = arr => arr.reduce((acc, item) => (
+  acc.concat((Array.isArray(item)) ? flatArr(item) : item)
+), []);
 
-//////////////////////////////////////////
-const flatArr = arr => arr.reduce((acc, item) => acc.concat((Array.isArray(item)) ? flatArr(item) : item), []);
-//////////////////////////////////
 const toTranslate = (n, countCalls) => {
 
   const fn = {
@@ -57,6 +57,7 @@ const toTranslate = (n, countCalls) => {
     8: 'восемьсот',
     9: 'девятьсот'
   };
+  
   let stringNum = n.toString();
 
   let currentCountCalls;
@@ -69,7 +70,6 @@ const toTranslate = (n, countCalls) => {
   if (stringNum === '0' && countCalls === undefined) {
     return 'ноль';
   }
-
 
   if (stringNum.length === 1) {
     return fn[stringNum];
@@ -120,10 +120,9 @@ const toTranslate = (n, countCalls) => {
       toTranslate(stringNum.slice(1), currentCountCalls);
   }
 
-  if (stringNum === 100000) {
+  if (stringNum === '100000') {
     return 'сто тысяч';
   }
-
   return 'Ваше число слишком большое';
 }
 
@@ -154,5 +153,3 @@ function countWithThous(n) {
   return checkThous(n[0]) +
     hardCheckSpace(n);
 }
-
-console.log(toTranslate(0))
